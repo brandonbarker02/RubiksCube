@@ -15,20 +15,17 @@ struct Button {
     std::function<void()> onClick;
 };
 
+//draws the cube given a vector of all rows
 void drawColorImages(std::vector<std::string> layout, sf::RenderWindow &window,
                      const std::map<std::string, sf::Texture> &colorTextures);
 
+//figures out the correct vector to send to drawColorImages
 void displayCube(Cube &cube, sf::RenderWindow &window, const std::map<std::string, sf::Texture> &colorTextures);
 
-void handleButtonClick(const sf::Vector2f &mouseClickPos, std::vector<Button> &buttons) {
-    for (Button &button: buttons) {
-        if (button.shape.getGlobalBounds().contains(mouseClickPos)) {
-            // Button clicked - run the associated onClick function
-            button.onClick();
-        }
-    }
-}
+//handles if a button is clicked
+void handleButtonClick(const sf::Vector2f &mouseClickPos, std::vector<Button> &buttons);
 
+//incrementally performs all moves in a given movesest
 int doMoveSet(Cube &uiCube, std::vector<std::string> &moveset, int previous, sf::RenderWindow &window,
               const std::map<std::string, sf::Texture> &colorTextures);
 
@@ -670,4 +667,13 @@ int doMoveSet(Cube &uiCube, std::vector<std::string> &moveset, int previous, sf:
     currentMove.push_back(moveset[previous - 1]);
     uiCube.algorithm(currentMove);
     return previous + 1;
+}
+
+void handleButtonClick(const sf::Vector2f &mouseClickPos, std::vector<Button> &buttons) {
+    for (Button &button: buttons) {
+        if (button.shape.getGlobalBounds().contains(mouseClickPos)) {
+            // Button clicked - run the associated onClick function
+            button.onClick();
+        }
+    }
 }
