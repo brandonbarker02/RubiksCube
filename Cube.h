@@ -63,32 +63,32 @@ public:
     // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     // ------------------------Scrambling/Solving----------------------
-    std::string scramble(int numMoves);
-    void solveCross();
-    void solveCrossEdge(char sideA, char sideB);
-    void solveBottomCorners();
-    void solveBottomCorner(char sideA, char sideB, char sideC);
-    void solveMiddleEdges();
-    void solveMiddleEdge(char sideA, char sideB);
-    void orientTopEdges();
-    void solveTopEdges();
-    void permuteTopCorners();
-    bool correctCornerPerumtation(Tile* corner);
-    void solveTopCorners();
-    void beginnersMethodSolve();
-    void algorithm(const std::vector<std::string> &alg);
-    void reverseAlgorithm(const std::vector<std::string> &alg);
-    void wideD();
-    void counterWideD();
-    void wideL();
-    void counterWideL();
-    std::set<std::pair<char, char>> getUnsolvedEdges();
-    void oldPochmannEdges();
-    std::set<std::vector<char>> getUnsolvedCorners();
-    bool cornerContains(char color, std::vector<char> &corner);
-    void oldPochmannCorners();
-    void oldPochmannSolve();
-    std::vector<std::string> getMovesDone();
+    std::string scramble(int numMoves); //scrambles the cube by doing a specified number of random moves
+    void solveCross(); //solves the white cross on the bottom of the cube
+    void solveCrossEdge(char sideA, char sideB); //solves a specified edge of the cross
+    void solveBottomCorners(); //solves the white corners on the bottom of the cube
+    void solveBottomCorner(char sideA, char sideB, char sideC); //solves a single corner on the bottm\om
+    void solveMiddleEdges(); //solves all of the edges in the middle layer
+    void solveMiddleEdge(char sideA, char sideB); //solves a single edge in the middle layers
+    void orientTopEdges(); //forms the yellow cross on top
+    void solveTopEdges(); //permutes the yellow cross
+    void permuteTopCorners(); //permutes the top corners
+    bool correctCornerPerumtation(Tile* corner); //checks if a corner is correctly permuted
+    void solveTopCorners(); //does the final solve of the top layer
+    void beginnersMethodSolve(); // combines all of the above methods to solve the cube
+    void algorithm(const std::vector<std::string> &alg); // performs a sequence of specified moves
+    void reverseAlgorithm(const std::vector<std::string> &alg); // performs the backwards version of a sequence of specified moves
+    void wideD(); // rotates both of the bottom layers clockwise
+    void counterWideD(); // rotates both of the bottom layers counter clockwise
+    void wideL();// rotates both of the leftmost layers clockwise
+    void counterWideL(); // rotates both of the leftmost layers counter clockwise
+    std::set<std::pair<char, char>> getUnsolvedEdges(); //returns all unsolved edges on the cube
+    void oldPochmannEdges(); //solves all edges of the cube using old pochmann method
+    std::set<std::vector<char>> getUnsolvedCorners(); //returns all unsolved corners on the cube
+    bool cornerContains(char color, std::vector<char> &corner); //checks if the specified color is part of the corner
+    void oldPochmannCorners(); //solves all corners of the cube using old pochmann method
+    void oldPochmannSolve(); // combines the corners and edges method
+    std::vector<std::string> getMovesDone(); //returns the vector of all moves performed
 };
 
 
